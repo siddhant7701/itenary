@@ -1,0 +1,8 @@
+node_modules/
+/dist/
+/data/
+.env
+*.log
+
+# Local design docs (keep private)
+*.pdf

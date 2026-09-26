@@ -1,0 +1,49 @@
+{
+  "name": "itenary",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Itenary - collaborative, AI-orchestrated travel planning for Bharat",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c magenta,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node --watch-path=server --no-warnings=ExperimentalWarning server/index.js",
+    "dev:web": "vite",
+    "build": "vite build",
+    "start": "node --no-warnings=ExperimentalWarning server/index.js",
+    "seed": "node --no-warnings=ExperimentalWarning server/seed.js --reset",
+    "setup": "npm install && npm run build && npm run seed"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.127.0",
+    "compression": "^1.8.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.4.0",
+    "socket.io": "^4.8.3"
+  },
+  "devDependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "clsx": "^2.1.1",
+    "concurrently": "^10.0.5",
+    "dayjs": "^1.11.23",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.47.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-leaflet": "^5.0.0",
+    "react-router": "^8.4.0",
+    "recharts": "^3.10.1",
+    "socket.io-client": "^4.8.3",
+    "sonner": "^2.0.8",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0"
+  }
+}

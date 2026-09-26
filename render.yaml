@@ -1,0 +1,35 @@
+# Render Blueprint for the itenary.com API server (Express + Socket.IO + SQLite).
+# Render → New → Blueprint → pick this GitHub repo. The web app itself deploys on Vercel.
+services:
+  - type: web
+    name: itenary-api
+    runtime: node
+    plan: starter # persistent disks need a paid instance; on "free" the database resets on every deploy
+    region: singapore # closest Render region to India
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: itenary-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /var/data
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DEMO_MODE
+        value: "true" # set to "false" once WhatsApp OTP is configured
+      - key: CORS_ORIGIN
+        value: "*" # later: https://itenary.com,https://www.itenary.com
+      - key: ADMIN_EMAIL
+        value: admin@itenary.com
+      - key: ADMIN_PASSWORD
+        sync: false # you'll be asked for it when creating the Blueprint
+      - key: ANTHROPIC_API_KEY
+        sync: false # optional — enables Claude for the Yatri concierge

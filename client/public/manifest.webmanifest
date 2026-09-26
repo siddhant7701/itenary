@@ -1,0 +1,12 @@
+{
+  "name": "Itenary",
+  "short_name": "Itenary",
+  "description": "Plan trips together. Let Yatri, your AI concierge, book the rest.",
+  "start_url": "/app",
+  "display": "standalone",
+  "background_color": "#fbf8f4",
+  "theme_color": "#3b1f59",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
